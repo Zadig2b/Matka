@@ -1,0 +1,123 @@
+[
+    {
+      "id": "0",
+      "nom": "Escapade",
+      "pays": "Croatie",
+      "duree": "7 jours",
+      "description": "Voyage en Croatie",
+      "image": "",
+      "region": "Europe",
+      "prix": "1000",
+      "date_debut": "2022-12-12",
+      "date_fin": "2022-12-19"
+    },
+    {
+      "id": "1",
+      "nom": "Aventure dans les Alpes",
+      "pays": "France",
+      "duree": "10 jours",
+      "description": "Randonnée et escalade dans les Alpes françaises",
+      "image": "",
+      "region": "Europe",
+      "prix": "1500",
+      "date_debut": "2023-06-15",
+      "date_fin": "2023-06-25"
+    },
+    {
+      "id": "2",
+      "nom": "Plages de Bali",
+      "pays": "Indonésie",
+      "duree": "14 jours",
+      "description": "Séjour sur les plages paradisiaques de Bali",
+      "image": "",
+      "region": "Asie",
+      "prix": "2000",
+      "date_debut": "2023-09-01",
+      "date_fin": "2023-09-15"
+    },
+    {
+      "id": "3",
+      "nom": "Safari en Afrique",
+      "pays": "Kenya",
+      "duree": "10 jours",
+      "description": "Safari à travers les réserves naturelles du Kenya",
+      "image": "",
+      "region": "Afrique",
+      "prix": "2500",
+      "date_debut": "2023-04-10",
+      "date_fin": "2023-04-20"
+    },
+    {
+      "id": "4",
+      "nom": "Exploration en Amazonie",
+      "pays": "Brésil",
+      "duree": "12 jours",
+      "description": "Expédition dans la forêt amazonienne brésilienne",
+      "image": "",
+      "region": "Amérique du Sud",
+      "prix": "3000",
+      "date_debut": "2023-07-20",
+      "date_fin": "2023-08-01"
+    },
+    {
+      "id": "5",
+      "nom": "Circuit en Nouvelle-Zélande",
+      "pays": "Nouvelle-Zélande",
+      "duree": "15 jours",
+      "description": "Voyage d'exploration à travers la Nouvelle-Zélande",
+      "image": "",
+      "region": "Océanie",
+      "prix": "2800",
+      "date_debut": "2023-11-05",
+      "date_fin": "2023-11-20"
+    },
+    {
+      "id": "6",
+      "nom": "Culture japonaise",
+      "pays": "Japon",
+      "duree": "10 jours",
+      "description": "Découverte de la culture et des traditions japonaises",
+      "image": "",
+      "region": "Asie",
+      "prix": "2200",
+      "date_debut": "2023-10-15",
+      "date_fin": "2023-10-25"
+    },
+    {
+      "id": "7",
+      "nom": "Road trip aux États-Unis",
+      "pays": "États-Unis",
+      "duree": "21 jours",
+      "description": "Aventure sur les routes américaines",
+      "image": "",
+      "region": "Amérique du Nord",
+      "prix": "3500",
+      "date_debut": "2023-08-10",
+      "date_fin": "2023-08-31"
+    },
+    {
+      "id": "8",
+      "nom": "Plongée en mer Rouge",
+      "pays": "Égypte",
+      "duree": "8 jours",
+      "description": "Plongée sous-marine dans les eaux cristallines de la mer Rouge",
+      "image": "",
+      "region": "Afrique",
+      "prix": "1800",
+      "date_debut": "2023-05-20",
+      "date_fin": "2023-05-27"
+    },
+    {
+      "id": "9",
+      "nom": "Séjour à Rome",
+      "pays": "Italie",
+      "duree": "5 jours",
+      "description": "Découverte des sites historiques de Rome",
+      "image": "",
+      "region": "Europe",
+      "prix": "1200",
+      "date_debut": "2023-09-25",
+      "date_fin": "2023-09-30"
+    }
+  ]
+  

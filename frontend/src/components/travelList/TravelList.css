@@ -1,0 +1,17 @@
+
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+    gap: 20px;
+    max-width: 500px;
+}
+.travel-image {
+    /* width: 200px;
+    height: 200px; */
+}
+
+.header {
+    
+}
