@@ -3,6 +3,7 @@ import TravelList from "@/components/travelList/TravelList";
 import voyages from "./../../data.json";
 import "./globals.css"
 import HeroHeader from "@/components/heroHeader/HeroHeader";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
   
@@ -14,7 +15,10 @@ export default function Home() {
     <TravelList
     travels={voyages}
     />
-          <HeroHeader/>
+        <TravelList
+    travels={voyages}
+    />
+          <Footer/>
 
     </div>
     </>

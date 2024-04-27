@@ -9,15 +9,17 @@ export default function TravelList(props) {
     <div className="scroll-container">
       
       <div className="row">
-      <div className="header">
+      <div className="list-header">
           <h1>Travels List</h1>
         </div>
         {props.travels.map((travel, index) => (
           <div key={index} className="column">
             <div className="card">
+              <div className="card-header">
               <Link href={"/" + travel.id}>
                 <h2>{travel.nom}</h2>
               </Link>
+              </div>
               <TravelCardTeaser 
               name={travel.nom}
               pays={travel.pays}

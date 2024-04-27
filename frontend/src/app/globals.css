@@ -9,13 +9,22 @@ h1, h2 {
   margin: 20px;
   padding: 10px;
   border-radius: 20px;
+  box-shadow: 0 4px 6px 5px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);  
 
 
 }
 .All {
 
 }
+a:link { 
+  text-decoration: none; 
+  font-weight: bold;
+} 
 
+a:hover { 
+  font-size: large; 
+} 
 
 @font-face {
     font-family: "Lexend";  

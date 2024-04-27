@@ -11,8 +11,14 @@
     height: 200px; */
 }
 
-.header {
+.list-header {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 .column {
@@ -34,11 +40,14 @@
 
 }
 .row {
+  position: relative;
   white-space: nowrap;
   overflow-x: auto;
   width: 90vw;
   background-color: rgba(64, 95, 174, 1);
   border-radius: 20px;
+  box-shadow: 0 4px 6px 5px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);   
 }
 
 /* Clear floats after the columns */
@@ -50,18 +59,38 @@
 
 /* Style the counter cards */
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
   margin: 20px;
   text-align: center;
   background-color: #f1f1f1;
+  border-radius: 20px;
+
 }
 
+.card-header {
+  text-wrap:wrap
+}
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
     display: block;
     margin-bottom: 20px;
+  }
+  .row {
+  overflow-x: auto;  
+  height: 500px;
+  }
+  .card {
+    /* height: 50%;
+    width: 50%; */
+
+  }
+  .list-header{
   }
 }
