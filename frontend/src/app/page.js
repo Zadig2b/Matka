@@ -1,20 +1,21 @@
 import Navbar from "@/components/navbar/Navbar";
-import FetchImg from "@/components/Avatar";
 import TravelList from "@/components/travelList/TravelList";
 import voyages from "./../../data.json";
 import "./globals.css"
-import Fonts from "next/font/google";
+import HeroHeader from "@/components/heroHeader/HeroHeader";
 
 export default function Home() {
   
   return (
     <>
     <Navbar/>
-    <div className="body">
+    <div className="All">
+      <HeroHeader/>
     <TravelList
     travels={voyages}
     />
-    <FetchImg/>
+          <HeroHeader/>
+
     </div>
     </>
   );

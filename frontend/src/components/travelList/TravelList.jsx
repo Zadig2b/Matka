@@ -1,4 +1,3 @@
-import FetchImg from "../Avatar";
 import "./TravelList.css";
 import Link from "next/link";
 import TravelCardTeaser from "./../travelCardTeaser/TravelCardTeaser";
@@ -6,8 +5,11 @@ import TravelCardTeaser from "./../travelCardTeaser/TravelCardTeaser";
 export default function TravelList(props) {
   return (
     <>
+
+    <div className="scroll-container">
+      
       <div className="row">
-        <div className="header">
+      <div className="header">
           <h1>Travels List</h1>
         </div>
         {props.travels.map((travel, index) => (
@@ -31,6 +33,9 @@ export default function TravelList(props) {
           </div>
         ))}
       </div>
+      </div>
+
+      
     </>
   );
 }
