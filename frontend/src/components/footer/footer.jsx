@@ -15,10 +15,7 @@ export default function Footer(props) {
             </div>
           </div>
         </div>
-        <div className="hero-subheader">
-          <h2>{props.subtitle}</h2>
-          <div className="subheader-content">{metadata.description}</div>
-        </div>
+
       </div>
     </>
   );

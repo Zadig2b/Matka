@@ -9,7 +9,7 @@ export default function Navbar() {
       <nav>
         <ul className="navigation">
         <li>
-          <Link href="/accueil">Accueil</Link>
+          <Link href="/">Accueil</Link>
           </li>
         <li>
            <Link href="/destination">Destinations</Link>

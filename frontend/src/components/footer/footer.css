@@ -1,11 +1,10 @@
 .footer-header{
-    position: relative;
     height: 200px;
     width: auto;
     background-color: rgba(64, 95, 174, 1);
 
 }
-.hero-subheader {
+.footer-subheader {
     top: 200px;
     left: 200px;
     position: absolute;
@@ -22,7 +21,8 @@
 
 .super-footer {
     height: 200px;
-    
+
+    width: 100vw;
 }
 
 .hero-logo {

@@ -9,7 +9,6 @@ export default function Home() {
   
   return (
     <>
-    <Navbar/>
     <div className="All">
       <HeroHeader/>
     <TravelList
@@ -18,8 +17,6 @@ export default function Home() {
         <TravelList
     travels={voyages}
     />
-          <Footer/>
-
     </div>
     </>
   );

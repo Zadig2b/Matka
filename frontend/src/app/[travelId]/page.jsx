@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Navbar from "@/components/navbar/Navbar";
 import TravelCard from "@/components/travelCard/TravelCard";
 
 export default function CharacterDetail(props) {
@@ -14,7 +13,7 @@ export default function CharacterDetail(props) {
     // Déclenchement de la récupération des données de personnages au montage du composant.
     try {
       fetch(
-        "https://rickandmortyapi.com/api/character/" + props.params.travel
+        "https://rickandmortyapi.com/api/character/" + props.params.travelId
       )
         .then((response) => response.json()) // Transformation de la réponse en JSON.
         .then((data) => {
@@ -29,7 +28,6 @@ export default function CharacterDetail(props) {
 
   return (
     <main>
-      <Navbar />
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
       {loading && !error && <div>Données en cours de chargement !</div>}
       {!loading && !error && data && (
@@ -45,3 +43,4 @@ export default function CharacterDetail(props) {
     </main>
   );
 }
+
