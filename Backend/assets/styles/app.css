@@ -1,3 +1,70 @@
-body {
-    background-color: skyblue;
+table {
+    border: 2px solid black;
 }
+
+.card {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    margin: 50px;
+    border-radius: 20px;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+ul {
+    list-style-type: none;
+  }
+
+  #film-list {
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(253, 200, 194);
+    ;
+  }
+  
+  .list {
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(253, 200, 194);
+    ;
+  }
+
+  a {
+    color: black;
+  }
+
+  a:link { 
+    text-decoration: none; 
+    font-weight: bold;
+  } 
+  
+  a:hover { 
+    /* font-size: large;  */
+    color: rgb(138, 74, 74);
+
+  } 

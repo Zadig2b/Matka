@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DemandeGenerale{% endblock %}
+
+{% block body %}
+    <h1>Create new DemandeGenerale</h1>
+
+    {{ include('demande_generale/_form.html.twig') }}
+
+    <a href="{{ path('app_demande_generale_index') }}">back to list</a>
+{% endblock %}
