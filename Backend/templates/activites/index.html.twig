@@ -15,14 +15,14 @@
             </tr>
         </thead>
         <tbody>
-        {% for activite in activites %}
+        {% for activite in Activites %}
             <tr>
                 <td>{{ activite.id }}</td>
                 <td>{{ activite.titre }}</td>
                 <td>{{ activite.description }}</td>
                 <td>
-                    <a href="{{ path('app_activites_show', {'id': activite.id}) }}">show</a>
-                    <a href="{{ path('app_activites_edit', {'id': activite.id}) }}">edit</a>
+                    <a href="{{ path('app_Activites_show', {'id': activite.id}) }}">show</a>
+                    <a href="{{ path('app_Activites_edit', {'id': activite.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_activites_new') }}">Create new</a>
+    <a href="{{ path('app_Activites_new') }}">Create new</a>
 {% endblock %}

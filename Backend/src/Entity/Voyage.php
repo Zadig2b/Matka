@@ -47,10 +47,10 @@ class Voyage
     private ?User $voyage_user = null;
 
     /**
-     * @var Collection<int, activites>
+     * @var Collection<int, Activites>
      */
-    #[ORM\ManyToMany(targetEntity: activites::class, inversedBy: 'voyage_par_activites')]
-    private Collection $activites;
+    #[ORM\ManyToMany(targetEntity: Activites::class, inversedBy: 'voyage_par_Activites')]
+    private Collection $Activites;
 
     /**
      * @var Collection<int, Pays>
@@ -67,7 +67,7 @@ class Voyage
     public function __construct()
     {
         $this->get_cat = new ArrayCollection();
-        $this->activites = new ArrayCollection();
+        $this->Activites = new ArrayCollection();
         $this->pays = new ArrayCollection();
         $this->demandes = new ArrayCollection();
     }
@@ -201,25 +201,25 @@ class Voyage
     }
 
     /**
-     * @return Collection<int, activites>
+     * @return Collection<int, Activites>
      */
     public function getActivites(): Collection
     {
-        return $this->activites;
+        return $this->Activites;
     }
 
-    public function addActivite(activites $activite): static
+    public function addActivite(Activites $activite): static
     {
-        if (!$this->activites->contains($activite)) {
-            $this->activites->add($activite);
+        if (!$this->Activites->contains($activite)) {
+            $this->Activites->add($activite);
         }
 
         return $this;
     }
 
-    public function removeActivite(activites $activite): static
+    public function removeActivite(Activites $activite): static
     {
-        $this->activites->removeElement($activite);
+        $this->Activites->removeElement($activite);
 
         return $this;
     }

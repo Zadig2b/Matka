@@ -25,12 +25,12 @@ class Activites
     /**
      * @var Collection<int, Voyage>
      */
-    #[ORM\ManyToMany(targetEntity: Voyage::class, mappedBy: 'activites')]
-    private Collection $voyage_par_activites;
+    #[ORM\ManyToMany(targetEntity: Voyage::class, mappedBy: 'Activites')]
+    private Collection $voyage_par_Activites;
 
     public function __construct()
     {
-        $this->voyage_par_activites = new ArrayCollection();
+        $this->voyage_par_Activites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,13 +67,13 @@ class Activites
      */
     public function getVoyageParActivites(): Collection
     {
-        return $this->voyage_par_activites;
+        return $this->voyage_par_Activites;
     }
 
     public function addVoyageParActivite(Voyage $voyageParActivite): static
     {
-        if (!$this->voyage_par_activites->contains($voyageParActivite)) {
-            $this->voyage_par_activites->add($voyageParActivite);
+        if (!$this->voyage_par_Activites->contains($voyageParActivite)) {
+            $this->voyage_par_Activites->add($voyageParActivite);
             $voyageParActivite->addActivite($this);
         }
 
@@ -82,7 +82,7 @@ class Activites
 
     public function removeVoyageParActivite(Voyage $voyageParActivite): static
     {
-        if ($this->voyage_par_activites->removeElement($voyageParActivite)) {
+        if ($this->voyage_par_Activites->removeElement($voyageParActivite)) {
             $voyageParActivite->removeActivite($this);
         }
 

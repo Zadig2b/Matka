@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\activites;
+use App\Entity\Activites;
 use App\Entity\Categorie;
 use App\Entity\Pays;
 use App\Entity\User;
@@ -37,8 +37,8 @@ class VoyageType extends AbstractType
             //     'class' => User::class,
             //     'choice_label' => 'id',
             // ])
-            ->add('activites', EntityType::class, [
-                'class' => activites::class,
+            ->add('Activites', EntityType::class, [
+                'class' => Activites::class,
                 'choice_label' => 'id',
                 'multiple' => true,
             ])

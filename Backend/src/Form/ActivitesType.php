@@ -16,7 +16,7 @@ class ActivitesType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
-            ->add('voyage_par_activites', EntityType::class, [
+            ->add('voyage_par_Activites', EntityType::class, [
                 'class' => Voyage::class,
                 'choice_label' => 'id',
                 'multiple' => true,
