@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import TravelCard from "@/components/travelCard/TravelCard";
+import TravelList from "@/components/travelList/TravelList";
 
 export default function CharacterDetail(props) {
   // Initialisation des états pour gérer le chargement, les erreurs, et les données reçues.
@@ -13,7 +14,7 @@ export default function CharacterDetail(props) {
     // Déclenchement de la récupération des données de personnages au montage du composant.
     try {
       fetch(
-        "https://rickandmortyapi.com/api/character/" + props.params.travelId
+        "http://127.0.0.1:8000/api/voyages"
       )
         .then((response) => response.json()) // Transformation de la réponse en JSON.
         .then((data) => {
@@ -31,12 +32,7 @@ export default function CharacterDetail(props) {
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
       {loading && !error && <div>Données en cours de chargement !</div>}
       {!loading && !error && data && (
-        <TravelCard
-          name={data.name}
-          species={data.species}
-          gender={data.gender}
-          origin={data.origin.name}
-          image={data.image}
+        <TravelList travels={data}
         />
       )}
       {!loading && error && <div>Une erreur est survenue</div>}

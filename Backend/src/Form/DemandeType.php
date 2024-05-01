@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Demande;
-use App\Entity\statut;
+use App\Entity\Statut;
 use App\Entity\voyage;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -23,8 +23,8 @@ class DemandeType extends AbstractType
                 'class' => voyage::class,
                 'choice_label' => 'id',
             ])
-            ->add('statut', EntityType::class, [
-                'class' => statut::class,
+            ->add('Statut', EntityType::class, [
+                'class' => Statut::class,
                 'choice_label' => 'id',
             ])
         ;

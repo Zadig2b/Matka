@@ -6,7 +6,9 @@ use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+// #[Groups('api_voyage_methods')]
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 class Categorie
 {
@@ -22,6 +24,7 @@ class Categorie
      * @var Collection<int, voyage>
      */
     #[ORM\ManyToMany(targetEntity: voyage::class, inversedBy: 'get_cat')]
+
     private Collection $relation;
 
     public function __construct()

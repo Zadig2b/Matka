@@ -1,6 +1,10 @@
 export default function TravelCard(props){
     return(
         <div className="card">
+              <p>{props.nom}</p>
+              <p>{props.debut}</p>
+              <p>{props.fin}</p>
+              <p>{props.description}</p>
               <p>{props.pays}</p>
               <p>{props.duree}</p>
               <p>{props.prix}</p>

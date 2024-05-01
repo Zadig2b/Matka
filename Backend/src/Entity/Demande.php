@@ -4,8 +4,12 @@ namespace App\Entity;
 
 use App\Repository\DemandeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: DemandeRepository::class)]
+#[Groups('api_nouvelle_demande')]
+
 class Demande
 {
     #[ORM\Id]
@@ -30,8 +34,8 @@ class Demande
     private ?voyage $voyage = null;
 
     #[ORM\ManyToOne(inversedBy: 'demandes')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?statut $statut = null;
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Statut $Statut = null;
 
     public function getId(): ?int
     {
@@ -98,15 +102,17 @@ class Demande
         return $this;
     }
 
-    public function getStatut(): ?statut
+    public function getStatut(): ?Statut
     {
-        return $this->statut;
+        return $this->Statut;
     }
 
-    public function setStatut(?statut $statut): static
+    public function setStatut(?Statut $Statut): static
     {
-        $this->statut = $statut;
+        $this->Statut = $Statut;
 
         return $this;
     }
+
+
 }

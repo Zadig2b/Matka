@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: StatutRepository::class)]
+
 class Statut
 {
     #[ORM\Id]
@@ -21,13 +22,13 @@ class Statut
     /**
      * @var Collection<int, DemandeGenerale>
      */
-    #[ORM\OneToMany(targetEntity: DemandeGenerale::class, mappedBy: 'statut')]
+    #[ORM\OneToMany(targetEntity: DemandeGenerale::class, mappedBy: 'Statut')]
     private Collection $demandeGenerales;
 
     /**
      * @var Collection<int, Demande>
      */
-    #[ORM\OneToMany(targetEntity: Demande::class, mappedBy: 'statut')]
+    #[ORM\OneToMany(targetEntity: Demande::class, mappedBy: 'Statut')]
     private Collection $demandes;
 
     public function __construct()

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: VoyageRepository::class)]
 class Voyage
@@ -16,31 +17,44 @@ class Voyage
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('api_voyage_methods')]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[Groups('api_voyage_methods')]
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_debut = null;
 
+    #[Groups('api_voyage_methods')]
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_fin = null;
 
+
+    #[Groups('api_voyage_methods')]
     #[ORM\Column]
     private ?\DateInterval $duree = null;
 
+
+    #[Groups('api_voyage_methods')]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+
+    #[Groups('api_voyage_methods')]
     #[ORM\Column(length: 50)]
     private ?string $prix = null;
 
+
+    #[Groups('api_voyage_methods')]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     /**
      * @var Collection<int, Categorie>
      */
+
     #[ORM\ManyToMany(targetEntity: Categorie::class, mappedBy: 'relation')]
+    
     private Collection $get_cat;
 
     #[ORM\ManyToOne(inversedBy: 'user_voyage')]
@@ -164,6 +178,7 @@ class Voyage
     /**
      * @return Collection<int, Categorie>
      */
+    
     public function getGetCat(): Collection
     {
         return $this->get_cat;

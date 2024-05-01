@@ -5,8 +5,13 @@ namespace App\Entity;
 use App\Repository\DemandeGeneraleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 #[ORM\Entity(repositoryClass: DemandeGeneraleRepository::class)]
+#[Groups('demande')]
+
 class DemandeGenerale
 {
     #[ORM\Id]
@@ -34,7 +39,7 @@ class DemandeGenerale
 
     #[ORM\ManyToOne(inversedBy: 'demandeGenerales')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?statut $statut = null;
+    private ?Statut $Statut = null;
 
     public function getId(): ?int
     {
@@ -113,15 +118,16 @@ class DemandeGenerale
         return $this;
     }
 
-    public function getStatut(): ?statut
+    public function getStatut(): ?Statut
     {
-        return $this->statut;
+        return $this->Statut;
     }
 
-    public function setStatut(?statut $statut): static
+    public function setStatut(?Statut $Statut): static
     {
-        $this->statut = $statut;
+        $this->Statut = $Statut;
 
         return $this;
     }
+    
 }
