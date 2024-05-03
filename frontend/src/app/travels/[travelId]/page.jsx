@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import TravelCard from "@/components/travelCard/TravelCard";
-
-export default function CharacterDetail(props) {
+import "./page.css";
+export default function TravelDetails(props) {
   // Initialisation des états pour gérer le chargement, les erreurs, et les données reçues.
   const [loading, setLoading] = useState(true); // État de chargement des données.
   const [error, setError] = useState(false); // État pour capturer une éventuelle erreur lors du fetch.
@@ -27,7 +27,7 @@ export default function CharacterDetail(props) {
   }, []); // Le tableau vide indique que cet effet ne s'exécute qu'au montage.
 
   return (
-    <main>
+    <div className="card-container">
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
       {loading && !error && <div>Données en cours de chargement !</div>}
       {!loading && !error && data && (
@@ -43,7 +43,7 @@ export default function CharacterDetail(props) {
         />
       )}
       {!loading && error && <div>Une erreur est survenue</div>}
-    </main>
+    </div>
   );
 }
 

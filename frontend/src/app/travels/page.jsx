@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import TravelCard from "@/components/travelCard/TravelCard";
 import TravelList from "@/components/travelList/TravelList";
+import "./page.css"
 
-export default function CharacterDetail(props) {
+export default function FetchAllTravels(props) {
   // Initialisation des états pour gérer le chargement, les erreurs, et les données reçues.
   const [loading, setLoading] = useState(true); // État de chargement des données.
   const [error, setError] = useState(false); // État pour capturer une éventuelle erreur lors du fetch.

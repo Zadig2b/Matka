@@ -6,9 +6,7 @@ export default function TravelList(props) {
   return (
     <>
 
-    <div className="scroll-container">
       
-      <div className="row">
       <div className="list-header">
           <h1>Travels List</h1>
         </div>
@@ -16,14 +14,16 @@ export default function TravelList(props) {
           <div key={index} className="column">
             <div className="card">
               <div className="card-header">
-              <Link href={"/" + travel.id}>
-                <h2>{travel.nom}</h2>
+              <Link href={"/travels/" + travel.nom}>
+                {travel.nom}
               </Link>
               </div>
               <TravelCardTeaser 
               name={travel.nom}
               pays={travel.pays}
               duree={travel.duree}
+              debut={travel.date_debut}
+              fin={travel.date_fin}
               prix={travel.prix}
               region={travel.region}
               image={travel.image}
@@ -34,8 +34,6 @@ export default function TravelList(props) {
             </div>
           </div>
         ))}
-      </div>
-      </div>
 
       
     </>

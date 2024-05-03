@@ -111,7 +111,7 @@ class Voyage
     public function setDateDebut(\DateTimeInterface $date_debut): static
     {
         $this->date_debut = $date_debut;
-
+        $this->updateDuree();
         return $this;
     }
 
@@ -123,7 +123,7 @@ class Voyage
     public function setDateFin(\DateTimeInterface $date_fin): static
     {
         $this->date_fin = $date_fin;
-
+        $this->updateDuree();
         return $this;
     }
 
@@ -132,11 +132,13 @@ class Voyage
         return $this->duree;
     }
 
-    public function setDuree(\DateInterval $duree): static
-    {
-        $this->duree = $duree;
 
-        return $this;
+
+    public function updateDuree(): void
+    {
+        if ($this->date_debut && $this->date_fin) {
+            $this->duree = $this->date_fin->diff($this->date_debut);
+        }
     }
 
     public function getDescription(): ?string

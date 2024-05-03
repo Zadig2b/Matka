@@ -1,5 +1,4 @@
-import Footer from "@/components/footer/footer";
-import Navbar from "@/components/navbar/Navbar";
+
 import "./page.css";
 
 export default function Contact(){

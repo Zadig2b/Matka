@@ -1,4 +1,5 @@
-import { metadata, Aurore, Lexend } from "@/app/layout";
+import { Aurore, Lexend } from "@/app/layout";
+import { metadata } from "@/utils";
 import "./footer.css";
 import { Asar } from "next/font/google";
 

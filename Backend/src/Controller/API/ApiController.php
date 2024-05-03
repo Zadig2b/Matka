@@ -28,6 +28,20 @@ class ApiController extends AbstractController
         ;
     }
 
+    #[Route('/voyage/{nom}', name: 'detailvoyage2', methods: ['GET'])]
+    public function getDetailVoyage2(string $nom, SerializerInterface $serializer, VoyageRepository $voyageRepository): JsonResponse
+    {
+        $voyage = $voyageRepository->findOneBy(['nom' => $nom]);
+
+        if (!$voyage) {
+            throw $this->createNotFoundException('Voyage not found');
+        }
+
+        $jsonVoyage = $serializer->serialize($voyage, 'json', ['groups' => 'api_voyage_methods']);
+
+        return new JsonResponse($jsonVoyage, Response::HTTP_OK, [], true);
+    }
+
     #[Route('/voyage/{id}', name: 'detailvoyage', methods: ['GET'])]
     public function getDetailvoyage(int $id, SerializerInterface $serializer, VoyageRepository $voyageRepository): JsonResponse {
 
@@ -38,20 +52,6 @@ class ApiController extends AbstractController
         }
         return new JsonResponse(null, Response::HTTP_NOT_FOUND);
    }
-
-//    #[Route('/voyage2/{id}', name: 'detailvoyage', methods: ['GET'])]
-//    public function getDetailVoyage2(int $id, SerializerInterface $serializer, VoyageRepository $voyageRepository): JsonResponse
-//    {
-//        $voyage = $voyageRepository->find($id);
-
-//        if (!$voyage) {
-//            throw $this->createNotFoundException('Voyage not found');
-//        }
-
-//        $jsonVoyage = $serializer->serialize($voyage, 'json');
-
-//        return new JsonResponse($jsonVoyage, Response::HTTP_OK, [], true);
-//    }
 
    #[Route('/demande/new', name: 'demande_new', methods: ['POST'])]
    public function saveDemande(Request $request, EntityManagerInterface $em, 
@@ -130,6 +130,8 @@ public function saveDemandeGenerale(Request $request, EntityManagerInterface $em
 
         return new JsonResponse($jsonBook, Response::HTTP_CREATED, ["Location" => $location], true);
    }
+
+
 
 
 }

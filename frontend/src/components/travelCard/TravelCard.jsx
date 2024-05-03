@@ -1,21 +1,22 @@
+import { formatDuration, formatDate } from './../../utils';
+import './TravelCard.css';
 export default function TravelCard(props){
     return(
         <div className="card">
-              <p>{props.nom}</p>
-              <p>{props.debut}</p>
-              <p>{props.fin}</p>
-              <p>{props.description}</p>
-              <p>{props.pays}</p>
-              <p>{props.duree}</p>
-              <p>{props.prix}</p>
-              <p>{props.region}</p>
+          <div className="card-body">
+              <h1 className="card-title">{props.nom}</h1>
+              <h2> {formatDuration(props.duree)}</h2>
+
+              <h2>Du {formatDate(props.debut)} au {formatDate(props.fin)}</h2>
+              <h2>{props.prix}</h2>
+              </div>
               <img
-                className="card"
-                src={props.image}
-                alt={props.name}
-                width={200}
-                height={200}
+                className="card-img"
+                src={`http://localhost:8000/image/${props.image}`}                alt={props.name}
+
               />
+                            <p>{props.description}</p>
+
         </div>
     )
     

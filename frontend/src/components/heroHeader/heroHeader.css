@@ -1,7 +1,7 @@
 .hero-header{
     position: relative;
     height: 500px;
-    width: auto;
+    width: 100vw;
     background-color: rgba(64, 95, 174, 1);
 
 }
@@ -24,20 +24,5 @@
 
 }
 
-.hero-logo {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: center;
-    padding: 5px;
-    /* font-family: 'Lexend Deca'; */
- 
-    
-    /* position: absolute; */
-}
-.sub-logo {
-    width: fit-content;
-    border-radius: 20px;
-    background-color: rgba(133, 204, 255, 0.68);
-}
+
 

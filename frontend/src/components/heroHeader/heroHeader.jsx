@@ -1,6 +1,7 @@
-import { metadata, Aurore, Lexend } from "@/app/layout";
+import {  Aurore, Lexend } from "@/app/layout";
 import "./heroHeader.css";
 import { Asar } from "next/font/google";
+import { metadata } from "@/utils";
 
 const font = Asar({ subsets: ["latin"], weight: "400" });
 

@@ -26,7 +26,7 @@
                 <td>{{ voyage.nom }}</td>
                 <td>{{ voyage.dateDebut ? voyage.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ voyage.dateFin ? voyage.dateFin|date('Y-m-d') : '' }}</td>
-                <td>{{ voyage.duree ? voyage.duree.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
+                <td>{{ voyage.duree ? voyage.duree.format(' %m month(s), %d day(s)') : '' }}</td>
                 <td>{{ voyage.description }}</td>
                 <td>{{ voyage.prix }}</td>
                 <td>{{ voyage.image }}</td>

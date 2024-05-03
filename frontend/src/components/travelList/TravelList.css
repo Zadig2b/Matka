@@ -6,10 +6,7 @@
   gap: 20px;
   max-width: 500px;
 }
-.travel-image {
-  /* width: 200px;
-    height: 200px; */
-}
+
 
 .list-header {
   display:flex;
@@ -27,7 +24,7 @@
 
 .column {
   display: inline-block;
-  width: 33%;
+  width: 20%;
   padding: 0 10px;
 }
 
@@ -69,11 +66,20 @@
   text-align: center;
   background-color: #f1f1f1;
   border-radius: 20px;
+  /* width: auto;
+  height: fit-content; */
 
 }
 
 .card-header {
-  text-wrap:wrap
+  text-wrap:wrap;
+  background-color: #f1f1f1;
+  width: fit-content;
+  margin: 0px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px 5px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);  
 }
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
@@ -85,12 +91,5 @@
   .row {
   overflow-x: auto;  
   height: 500px;
-  }
-  .card {
-    /* height: 50%;
-    width: 50%; */
-
-  }
-  .list-header{
   }
 }

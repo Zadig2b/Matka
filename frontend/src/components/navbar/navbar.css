@@ -13,6 +13,7 @@
 
     .navigation {
         display: flex;
+        flex-wrap: wrap;
         gap: 30px;
         margin: 0;
         padding: 0;
