@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Voyage;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -45,4 +46,15 @@ class VoyageRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findVoyagesFromOthers(User $editor): ?array
+    {
+        return $this->createQueryBuilder('v')
+            ->leftJoin('v.voyage_user', 'u') 
+            ->andWhere('u != :editor')
+            ->setParameter('editor', $editor)
+            ->getQuery()
+            ->getResult();
+    }
+    
 }

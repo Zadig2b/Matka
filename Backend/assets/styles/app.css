@@ -1,3 +1,7 @@
+.super-container {
+  margin: 50px;
+}
+
 table {
     border: 2px solid black;
 }
@@ -7,7 +11,8 @@ table {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: fit-content;
+    flex-wrap: wrap;
+    width: 100%;
     height: fit-content;
     padding: 20px;
     margin: 50px;

@@ -5,15 +5,44 @@ namespace App\DataFixtures;
 use App\Entity\Categorie;
 use App\Entity\Pays;
 use App\Entity\Statut;
+use App\Entity\User;
 use App\Entity\Voyage;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+
 
 class AppFixtures extends Fixture
 {
 
     public function load(ObjectManager $manager): void
     {
+// Create User entities
+$userPrenom = ['John', 'Jane', 'Bob', 'Alice', 'David', 'Emily', 'Michael', 'Sarah', 'William', 
+'Emma', 'Daniel', 'Olivia', 'Ethan', 'Sophia', 'Matthew', 'Ava', 'James'];
+$userNom = ['Doe', 'Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Miller', 'Davis', 'Garcia'];
+$roles = ['ROLE_ADMIN', 'ROLE_EDITOR'];
+$userEntities = [];
+$roleIndex = 0; // Start with the first role
+$hashedPassword = password_hash('dev', PASSWORD_DEFAULT);
+
+foreach ($userPrenom as $name) {
+    $user = new User();
+    $user->setPrenom($name);
+    $user->setNom($userNom[array_rand($userNom)]);
+    $user->setPassword($hashedPassword);
+    
+    // Set the role based on the current index
+    $user->setRoles([$roles[$roleIndex]]);
+    $user->setEmail($name . '@Matka.com');
+
+    // Increment the role index for the next iteration
+    $roleIndex = ($roleIndex + 1) % count($roles); // Cycle through roles
+    
+    $manager->persist($user);
+    $userEntities[] = $user;
+}
+
+
         // Create Statut entities
         $statutNames = ['Non lue', 'En cours', 'Annulée', 'Acceptée'];
         $statutEntities = [];
@@ -68,7 +97,7 @@ class AppFixtures extends Fixture
             $voyage->setDescription('Description of Voyage ' . $i);
             $voyage->setPrix($this->randomPrice($voyage->getDuree()) . '€');
             $voyage->setImage($voyage->getNom() . '.jpg');
-        
+            $voyage->setVoyageUser($userEntities[array_rand($userEntities)]);
             // Randomly select a Pays entity
             $randomIndexPays = array_rand($paysEntities);
             $randomPays = $paysEntities[$randomIndexPays];

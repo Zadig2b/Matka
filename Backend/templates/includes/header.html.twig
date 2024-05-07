@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
-		{% if app.request.pathinfo == "/twig" %}
-			<a class="navbar-brand" href="{{ url('app_home')}}">Home</a>
+		{% if app.request.pathinfo == "/login" %}
+			<a class="navbar-brand" href="{{ url('app_register')}}">S'inscrire</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 		{% else %}
-			<a class="navbar-brand" href="{{ path ('app_voyage_index')}}">Voyage</a>
+			<a class="navbar-brand" href="{{ path ('app_login')}}">Login</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -16,6 +16,22 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+{% if is_granted('ROLE_ADMIN') %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_voyage_index')}}">Voyages</a>
+    </li>
+{% elseif is_granted('ROLE_EDITOR') %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('editor_voyage_index')}}">My Voyages</a>
+    </li>
+	    <li class="nav-item">
+        <a class="nav-link" href="{{ path('show_travel_from_others')}}">Voyages créés par d'autres</a>
+    </li>
+{% endif %}
+
+{% if is_granted('ROLE_ADMIN') %}
+
 				<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_pays_index')}}">Pays</a>
 				</li>
@@ -25,24 +41,16 @@
         				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_demande_index')}}">Demandes</a>
 				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a class="dropdown-item" href="#">Action</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Another action</a>
-						</li>
-						<li><hr class="dropdown-divider"></li>
-						<li>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</li>
-					</ul>
+				        				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_user_index')}}">User</a>
+				</li>
+				        				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_demande_generale_index')}}">Demandes Générale</a>
 				</li>
 			</ul>
+			{% elseif is_granted('ROLE_EDITOR') %}
+			{% endif %}
+
 			<form class="d-flex" role="search">
 				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success" type="submit">Search</button>

@@ -41,10 +41,17 @@
             </tr>
         </tbody>
     </table>
-
+                {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('app_voyage_index') }}">back to list</a>
 
     <a href="{{ path('app_voyage_edit', {'id': voyage.id}) }}">edit</a>
+
+{% elseif is_granted('ROLE_EDITOR') %}
+    <a href="{{ path('editor_voyage_index') }}">back to list</a>
+
+    <a href="{{ path('editor_voyage_edit', {'id': voyage.id}) }}">edit</a>
+
+{% endif %}
 
     {{ include('voyage/_delete_form.html.twig') }}
 {% endblock %}

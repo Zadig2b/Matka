@@ -24,7 +24,7 @@ class VoyageType extends AbstractType
             ->add('date_fin', null, [
                 'widget' => 'single_text',
             ])
-            ->add('duree')
+            // ->add('duree')
             ->add('description')
             ->add('prix')
             ->add('image')
@@ -37,11 +37,11 @@ class VoyageType extends AbstractType
             //     'class' => User::class,
             //     'choice_label' => 'id',
             // ])
-            ->add('Activites', EntityType::class, [
-                'class' => Activites::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-            ])
+            // ->add('Activites', EntityType::class, [
+            //     'class' => Activites::class,
+            //     'choice_label' => 'id',
+            //     'multiple' => true,
+            // ])
             ->add('pays', EntityType::class, [
                 'class' => Pays::class,
                 'choice_label' => 'id',
