@@ -38,7 +38,7 @@ class EditorController extends AbstractController
         // Get voyages associated with the authenticated user
         $voyages = $voyageRepository->findBy(['voyage_user' => $user]);
     
-        return $this->render('voyage/index.html.twig', [
+        return $this->render('voyage/index_mes_voyages.html.twig', [
             'voyages' => $voyages
         ]);
     }
@@ -53,7 +53,7 @@ class EditorController extends AbstractController
         $voyage = $voyageRepository->findVoyagesFromOthers($editor);
     
         // Render the Twig view to display the voyages
-        return $this->render('voyage/index.html.twig', [
+        return $this->render('voyage/index_from_others.html.twig', [
             'voyages' => $voyage,
         ]);
     }
@@ -84,15 +84,25 @@ class EditorController extends AbstractController
             'form' => $form,
         ]);
     }
+
     #[Route('/{id}', name: 'editor_voyage_show', methods: ['GET'])]
     public function show(Voyage $voyage): Response{
         return $this->render('voyage/show.html.twig', [
             'voyage' => $voyage,
         ]);
     }
+
     #[Route('/{id}/edit', name: 'editor_voyage_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Voyage $voyage, EntityManagerInterface $entityManager): Response
     {
+        // Get the authenticated user
+        $user = $this->security->getUser();
+
+        // Check if authenticated user is the same as the voyage_user
+        if ($user !== $voyage->getVoyageUser()) {
+            throw $this->createAccessDeniedException('You are not allowed to edit this voyage.');
+        }
+
         $form = $this->createForm(VoyageType::class, $voyage);
         $form->handleRequest($request);
 
@@ -110,6 +120,14 @@ class EditorController extends AbstractController
     #[Route('/{id}', name: 'editor_voyage_delete', methods: ['POST'])]
     public function delete(Request $request, Voyage $voyage, EntityManagerInterface $entityManager): Response
     {
+        // Get the authenticated user
+        $user = $this->security->getUser();
+
+        // Check if authenticated user is the same as the voyage_user
+        if ($user !== $voyage->getVoyageUser()) {
+            throw $this->createAccessDeniedException('You are not allowed to delete this voyage.');
+        }
+        // Check if the CSRF token is valid
         if ($this->isCsrfTokenValid('delete'.$voyage->getId(), $request->request->get('_token'))) {
             $entityManager->remove($voyage);
             $entityManager->flush();

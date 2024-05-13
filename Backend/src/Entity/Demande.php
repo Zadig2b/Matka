@@ -23,6 +23,9 @@ class Demande
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
+    #[ORM\Column(name: "voyage_id", type: "integer", nullable: false)]
+    private ?int $voyageId = null;
+
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
@@ -98,6 +101,17 @@ class Demande
     public function setVoyage(?voyage $voyage): static
     {
         $this->voyage = $voyage;
+
+        return $this;
+    }
+    public function getVoyageId(): ?int
+    {
+        return $this->voyageId;
+    }
+
+    public function setVoyageId(int $voyageId): self
+    {
+        $this->voyageId = $voyageId;
 
         return $this;
     }

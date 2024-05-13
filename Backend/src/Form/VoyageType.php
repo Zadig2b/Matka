@@ -30,8 +30,9 @@ class VoyageType extends AbstractType
             ->add('image')
             ->add('get_cat', EntityType::class, [
                 'class' => Categorie::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
                 'multiple' => true,
+                'label' => 'Catégorie',
             ])
             // ->add('voyage_user', EntityType::class, [
             //     'class' => User::class,
@@ -44,7 +45,7 @@ class VoyageType extends AbstractType
             // ])
             ->add('pays', EntityType::class, [
                 'class' => Pays::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
                 'multiple' => true,
             ])
         ;

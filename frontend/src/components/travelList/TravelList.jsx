@@ -27,7 +27,8 @@ export default function TravelList(props) {
               prix={travel.prix}
               region={travel.region}
               image={travel.image}
-              description={travel.description}              
+              description={travel.description}
+              id={travel.id}              
               />
 
 

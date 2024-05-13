@@ -17,6 +17,7 @@ class Voyage
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('api_voyage_methods')]
     private ?int $id = null;
 
     #[Groups('api_voyage_methods')]
@@ -50,6 +51,10 @@ class Voyage
     #[Groups('api_voyage_methods')]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+    #[Groups('api_voyage_methods')]
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $voyage_user_id = null;
 
     /**
      * @var Collection<int, Categorie>
@@ -175,6 +180,18 @@ class Voyage
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getVoyageUserId(): ?string
+    {
+        return $this->voyage_user_id;
+    }
+
+    public function setVoyageUserId(?string $voyage_user_id): static
+    {
+        $this->voyage_user_id = $voyage_user_id;
 
         return $this;
     }

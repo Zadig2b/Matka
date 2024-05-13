@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voyage index
+{% block title %} Liste des Voyages
 {% endblock %}
 
 {% block body %}
-	<h1>Voyage index</h1>
-
-	<table class="table">
+	<h1>Liste des Voyage</h1>
+<input type="text" id="filterInput" placeholder="Filter by name">
+	<table class="table" id="voyageTable">
 		<thead>
 			<tr>
-				<th>Id</th>
-				<th>Nom</th>
-				<th>Date_debut</th>
-				<th>Date_fin</th>
-				<th>Duree</th>
-				<th>Description</th>
-				<th>Prix</th>
-				<th>Image</th>
-				<th>actions</th>
+            <th id="idHeader" class="sortable" data-column-index="0">Id</th>
+            <th id="nomHeader" class="sortable" data-column-index="1">Nom</th>
+            <th id="dateDebutHeader" class="sortable" data-column-index="2">Date de début</th>
+            <th id="dateFinHeader" class="sortable" data-column-index="3">Date de fin</th>
+            <th id="dureeHeader" class="sortable" data-column-index="4">Durée</th>
+            <th id="descriptionHeader" data-column-index="5">Description</th>
+            <th id="prixHeader" class="sortable" data-column-index="6">Prix</th>
+            <th id="imageHeader">Image</th>
+            <th id="actionsHeader">actions</th>
 			</tr>
+
 		</thead>
-		<tbody>
+    <tbody id="tableBody">
 			{% for voyage in voyages %}
 				<tr>
 					<td>{{ voyage.id }}</td>
@@ -50,11 +51,81 @@
 			{% endfor %}
 		</tbody>
 	</table>
+
+	<script>
+    document.getElementById('filterInput').addEventListener('keyup', function() {
+        var filterValue = this.value.toLowerCase();
+        var rows = document.querySelectorAll('#tableBody tr');
+
+        rows.forEach(function(row) {
+            var nameColumn = row.querySelector('td:nth-child(2)');
+            if (nameColumn) {
+                var name = nameColumn.textContent.toLowerCase();
+                if (name.indexOf(filterValue) > -1) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.sortable').forEach(function(header) {
+        header.style.cursor = 'pointer';
+        header.addEventListener('click', function() {
+            var columnIndex = parseInt(header.getAttribute('data-column-index'));
+            sortTable(columnIndex);
+        });
+    });
+
+    var sortedColumnIndex = null;
+    var ascending = true;
+
+    function sortTable(columnIndex) {
+        var table = document.getElementById('voyageTable');
+        var rows = Array.from(table.querySelectorAll('tbody tr'));
+
+        if (sortedColumnIndex === columnIndex) {
+            ascending = !ascending;
+        } else {
+            ascending = true;
+        }
+
+        rows.sort(function(rowA, rowB) {
+            var cellA = rowA.cells[columnIndex].textContent.trim();
+            var cellB = rowB.cells[columnIndex].textContent.trim();
+
+            if (columnIndex === 6) {
+                cellA = parseFloat(cellA.replace(/[^\d.-]/g, ''));
+                cellB = parseFloat(cellB.replace(/[^\d.-]/g, ''));
+				return ascending ? cellA - cellB : cellB - cellA;
+
+            }
+
+            return ascending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+			
+        });
+
+        sortedColumnIndex = columnIndex;
+
+        var tbody = table.querySelector('tbody');
+        tbody.innerHTML = '';
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+</script>
+
+
 	{% if is_granted('ROLE_ADMIN') %}
-		<a href="{{ path('app_voyage_new') }}">Create new</a>
-
+<button type="button" class="btn btn-primary" id="create-travel-btn">
+    <a href="{{ path('app_voyage_new') }}" style="color: inherit; text-decoration: none;">Créer un Voyage</a>
+</button>
 	{% elseif is_granted('ROLE_EDITOR') %}
-		<a href="{{ path('editor_voyage_new') }}">Create new</a>
-
+<button type="button" class="btn btn-primary">
+    <a href="{{ path('editor_voyage_new') }}" style="color: inherit; text-decoration: none;">Créer un Voyage</a>
+</button>
 	{% endif %}
 {% endblock %}

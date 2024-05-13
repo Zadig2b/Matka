@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import TravelCard from "@/components/travelCard/TravelCard";
+import DemandeForm from "@/components/demandeForm/demandeForm";
+
 import "./page.css";
+
 export default function TravelDetails(props) {
   // Initialisation des états pour gérer le chargement, les erreurs, et les données reçues.
   const [loading, setLoading] = useState(true); // État de chargement des données.
@@ -19,6 +22,7 @@ export default function TravelDetails(props) {
         .then((data) => {
           setLoading(false); // Arrêt de l'indicateur de chargement après la réception des données.
           setData(data); // Enregistrement des données reçues dans l'état 'data'.
+          console.log(data);
         });
     } catch (error) {
       setError(true); // Enregistrement de l'erreur dans l'état 'error'.
@@ -26,21 +30,26 @@ export default function TravelDetails(props) {
     }
   }, []); // Le tableau vide indique que cet effet ne s'exécute qu'au montage.
 
+
   return (
     <div className="card-container">
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
       {loading && !error && <div>Données en cours de chargement !</div>}
       {!loading && !error && data && (
+        <>
         <TravelCard
           nom={data.nom}
           debut={data.date_debut}
           fin={data.date_fin}
-          // origin={data.origin.name}
           duree={data.duree}
           description={data.description}
           prix={data.prix}
           image={data.image}
+          id={data.id}
         />
+        <DemandeForm 
+        id={data.id}/>
+        </>
       )}
       {!loading && error && <div>Une erreur est survenue</div>}
     </div>

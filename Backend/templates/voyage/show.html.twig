@@ -1,57 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voyage{% endblock %}
+{% block title %}Voyage
+{% endblock %}
 
 {% block body %}
-    <h1>Voyage</h1>
+	<h1>Voyage</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ voyage.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ voyage.nom }}</td>
-            </tr>
-            <tr>
-                <th>Date_debut</th>
-                <td>{{ voyage.dateDebut ? voyage.dateDebut|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date_fin</th>
-                <td>{{ voyage.dateFin ? voyage.dateFin|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Duree</th>
-                <td>{{ voyage.duree ? voyage.duree.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ voyage.description }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ voyage.prix }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ voyage.image }}</td>
-            </tr>
-        </tbody>
-    </table>
-                {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('app_voyage_index') }}">back to list</a>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ voyage.id }}</td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td>{{ voyage.nom }}</td>
+			</tr>
+			<tr>
+				<th>Date de début</th>
+				<td>{{ voyage.dateDebut ? voyage.dateDebut|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Date de fin</th>
+				<td>{{ voyage.dateFin ? voyage.dateFin|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Durée</th>
+				<td>{{ voyage.duree ? voyage.duree.format('%m month(s), %d day(s)') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ voyage.description }}</td>
+			</tr>
+			<tr>
+				<th>Prix</th>
+				<td>{{ voyage.prix }}</td>
+			</tr>
+			<tr>
+				<th>Image</th>
+				<td>{{ voyage.image }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_voyage_edit', {'id': voyage.id}) }}">edit</a>
+	<table class="creator-table">
+		<tbody>
+			<tr>
+				<th>Prénom du Créateur</th>
+				<td>{{ voyage.voyageUser.prenom }}</td>
+			</tr>
+			<tr>
+				<th>Nom du Créateur</th>
+				<td>{{ voyage.voyageUser.nom }}</td>
+			</tr>
+			<tr>
+				<th>ID du Créateur</th>
+				<td>{{ voyage.voyageUserId }}</td>
+			</tr>
+		</tbody>
+	</table>
+    
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('app_voyage_index') }}">retour à la liste</a>
 
-{% elseif is_granted('ROLE_EDITOR') %}
-    <a href="{{ path('editor_voyage_index') }}">back to list</a>
+		<a href="{{ path('app_voyage_edit', {'id': voyage.id}) }}">Editer</a>
 
-    <a href="{{ path('editor_voyage_edit', {'id': voyage.id}) }}">edit</a>
+	{% elseif is_granted('ROLE_EDITOR') %}
+		<a href="{{ path('editor_voyage_index') }}">retour à la liste</a>
 
-{% endif %}
+		<a href="{{ path('editor_voyage_edit', {'id': voyage.id}) }}">Editer</a>
 
-    {{ include('voyage/_delete_form.html.twig') }}
+	{% endif %}
+
+	{{ include('voyage/_delete_form.html.twig') }}
 {% endblock %}

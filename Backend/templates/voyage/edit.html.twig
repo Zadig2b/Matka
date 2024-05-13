@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Voyage
+{% block title %}Edition de Voyage
 {% endblock %}
 
 {% block body %}
-	<h1>Edit Voyage</h1>
+	<h1>Edition de Voyage</h1>
 
 	{{ include('voyage/_form.html.twig', {'button_label': 'Update'}) }}
 
 	{% if is_granted('ROLE_ADMIN') %}
-		<a href="{{ path('app_voyage_index') }}">back to list</a>
+		<a href="{{ path('app_voyage_index') }}">retour à la liste</a>
 	{% elseif is_granted('ROLE_EDITOR') %}
-		<a href="{{ path('editor_voyage_index') }}">back to list</a>
+		<a href="{{ path('editor_voyage_index') }}">retour à la liste</a>
 	{% endif %}
 	{{ include('voyage/_delete_form.html.twig') }}
 {% endblock %}

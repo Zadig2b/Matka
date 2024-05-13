@@ -43,16 +43,26 @@ foreach ($userPrenom as $name) {
 }
 
 
-        // Create Statut entities
-        $statutNames = ['Non lue', 'En cours', 'Annulée', 'Acceptée'];
-        $statutEntities = [];
-        foreach ($statutNames as $name) {
-            $statut = new Statut();
-            $statut->setNom($name);
 
-            $manager->persist($statut);
-            $statutEntities[] = $statut;
-        }
+        // Create Statut entities
+$statutData = [
+    ['id' => 1, 'nom' => 'Non lue'],
+    ['id' => 2, 'nom' => 'En cours'],
+    ['id' => 3, 'nom' => 'Annulée'],
+    ['id' => 4, 'nom' => 'Acceptée'],
+];
+
+foreach ($statutData as $data) {
+    $statut = new Statut();
+    $statut->setId($data['id']); // Set the ID
+    $statut->setNom($data['nom']);
+
+    $manager->persist($statut);
+    $statutEntities[] = $statut;
+
+}
+
+
 
         // Create Pays entities
         $paysNames = ['Finlande', 'Suède', 'Islande', 'Norvège', 'Estonie', 'Lettonie', 'Lituanie'];

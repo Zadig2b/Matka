@@ -12,8 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Statut
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer', nullable: false, options: ['unsigned' => true])] // Add options
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -40,6 +39,13 @@ class Statut
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getNom(): ?string

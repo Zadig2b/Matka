@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/pays')]
+#[Route('/admin/pays')]
 class PaysController extends AbstractController
 {
     #[Route('/', name: 'app_pays_index', methods: ['GET'])]

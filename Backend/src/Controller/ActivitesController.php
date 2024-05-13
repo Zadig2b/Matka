@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/Activites')]
+#[Route('/admin/Activites')]
 class ActivitesController extends AbstractController
 {
     #[Route('/', name: 'app_Activites_index', methods: ['GET'])]

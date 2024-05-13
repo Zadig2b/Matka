@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste de mes Voyages
+{% endblock %}
+
+{% block body %}
+	<h1>Liste de mes voyage</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Date_debut</th>
+				<th>Date_fin</th>
+				<th>Duree</th>
+				<th>Description</th>
+				<th>Prix</th>
+				<th>Image</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for voyage in voyages %}
+				<tr>
+					<td>{{ voyage.id }}</td>
+					<td>{{ voyage.nom }}</td>
+					<td>{{ voyage.dateDebut ? voyage.dateDebut|date('Y-m-d') : '' }}</td>
+					<td>{{ voyage.dateFin ? voyage.dateFin|date('Y-m-d') : '' }}</td>
+					<td>{{ voyage.duree ? voyage.duree.format(' %m month(s), %d day(s)') : '' }}</td>
+					<td>{{ voyage.description }}</td>
+					<td>{{ voyage.prix }}</td>
+					<td>{{ voyage.image }}</td>
+					<td>
+						{% if is_granted('ROLE_ADMIN') %}
+							<a href="{{ path('app_voyage_show', {'id': voyage.id}) }}">show</a>
+							<a href="{{ path('app_voyage_edit', {'id': voyage.id}) }}">edit</a>
+
+						{% elseif is_granted('ROLE_EDITOR') %}
+							<a href="{{ path('editor_voyage_show', {'id': voyage.id}) }}">show</a>
+							<a href="{{ path('editor_voyage_edit', {'id': voyage.id}) }}">edit</a>
+
+						{% endif %}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% if is_granted('ROLE_ADMIN') %}
+<button type="button" class="btn btn-primary">
+    <a href="{{ path('app_voyage_new') }}" style="color: inherit; text-decoration: none;">Créer un Voyage</a>
+</button>
+	{% elseif is_granted('ROLE_EDITOR') %}
+<button type="button" class="btn btn-primary">
+    <a href="{{ path('editor_voyage_new') }}" style="color: inherit; text-decoration: none;">Créer un Voyage</a>
+</button>
+	{% endif %}
+{% endblock %}
