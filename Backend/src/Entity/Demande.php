@@ -34,7 +34,7 @@ class Demande
 
     #[ORM\ManyToOne(inversedBy: 'demandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?voyage $voyage = null;
+    private ?Voyage $voyage = null;
 
     #[ORM\ManyToOne(inversedBy: 'demandes')]
     #[ORM\JoinColumn(nullable: true)]
@@ -93,12 +93,12 @@ class Demande
         return $this;
     }
 
-    public function getVoyage(): ?voyage
+    public function getVoyage(): ?Voyage
     {
         return $this->voyage;
     }
 
-    public function setVoyage(?voyage $voyage): static
+    public function setVoyage(?Voyage $voyage): static
     {
         $this->voyage = $voyage;
 

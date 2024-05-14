@@ -1,4 +1,5 @@
 
+import DemandeGenerale from "@/components/demandeGenerale/demandeGenerale";
 import "./page.css";
 
 export default function Contact(){
@@ -9,6 +10,8 @@ export default function Contact(){
         </div>
         <div className="contact-body">
             <p>This is the contact page</p>
+            <DemandeGenerale/>
+
         </div>
         </>
     )

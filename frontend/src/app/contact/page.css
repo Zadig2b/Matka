@@ -1,4 +1,5 @@
 .contact-body {
-    height: 500px;
-    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

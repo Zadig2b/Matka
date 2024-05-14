@@ -21,9 +21,9 @@ class Categorie
     private ?string $nom = null;
 
     /**
-     * @var Collection<int, voyage>
+     * @var Collection<int, Voyage>
      */
-    #[ORM\ManyToMany(targetEntity: voyage::class, inversedBy: 'get_cat')]
+    #[ORM\ManyToMany(targetEntity: Voyage::class, inversedBy: 'get_cat')]
 
     private Collection $relation;
 
@@ -50,14 +50,14 @@ class Categorie
     }
 
     /**
-     * @return Collection<int, voyage>
+     * @return Collection<int, Voyage>
      */
     public function getRelation(): Collection
     {
         return $this->relation;
     }
 
-    public function addRelation(voyage $relation): static
+    public function addRelation(Voyage $relation): static
     {
         if (!$this->relation->contains($relation)) {
             $this->relation->add($relation);
@@ -66,7 +66,7 @@ class Categorie
         return $this;
     }
 
-    public function removeRelation(voyage $relation): static
+    public function removeRelation(Voyage $relation): static
     {
         $this->relation->removeElement($relation);
 

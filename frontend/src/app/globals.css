@@ -14,9 +14,23 @@ h1, h2 {
 
 }
 
+.logo-container {
 
+}
 
+.logoSvg {
+  transform: scale(0.2);
+  
+  
+}
+#logo {
+  height: 50px;
+}
 
+#icône {
+  width: 200px;
+
+}
 a:link { 
   text-decoration: none; 
   font-weight: bold;

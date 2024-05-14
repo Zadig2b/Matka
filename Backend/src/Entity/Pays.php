@@ -19,9 +19,9 @@ class Pays
     private ?string $nom = null;
 
     /**
-     * @var Collection<int, voyage>
+     * @var Collection<int, Voyage>
      */
-    #[ORM\ManyToMany(targetEntity: voyage::class, inversedBy: 'pays')]
+    #[ORM\ManyToMany(targetEntity: Voyage::class, inversedBy: 'pays')]
     private Collection $pays_voyage;
 
     public function __construct()
@@ -47,14 +47,14 @@ class Pays
     }
 
     /**
-     * @return Collection<int, voyage>
+     * @return Collection<int, Voyage>
      */
     public function getPaysVoyage(): Collection
     {
         return $this->pays_voyage;
     }
 
-    public function addPaysVoyage(voyage $paysVoyage): static
+    public function addPaysVoyage(Voyage $paysVoyage): static
     {
         if (!$this->pays_voyage->contains($paysVoyage)) {
             $this->pays_voyage->add($paysVoyage);
@@ -63,7 +63,7 @@ class Pays
         return $this;
     }
 
-    public function removePaysVoyage(voyage $paysVoyage): static
+    public function removePaysVoyage(Voyage $paysVoyage): static
     {
         $this->pays_voyage->removeElement($paysVoyage);
 

@@ -2,7 +2,7 @@ import { formatDuration, formatDate } from './../../utils';
 import './TravelCard.css';
 export default function TravelCard(props){
     return(
-        <div className="card">
+        <div className="custom-card">
           <div className="card-body">
               <h1 className="card-title">{props.nom}</h1>
               <div className='id' hidden={true}>{props.id}</div>

@@ -1,9 +1,4 @@
-.footer-header{
-    height: 200px;
-    width: auto;
-    background-color: rgba(64, 95, 174, 1);
 
-}
 .footer-subheader {
     top: 200px;
     left: 200px;
@@ -18,11 +13,30 @@
     padding: 20px;
     font-family: 'Lexend';
 }
-/* 
+
 .super-footer {
     height: 200px;
-
     width: 100vw;
-} */
+    background-color: rgba(64, 95, 174, 1);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo-footer {
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 150px;
+}
 
 
+@media screen and (max-width: 1200px)  {
+
+
+    #logo-footer, #icône {
+        display: none;
+    }
+  }

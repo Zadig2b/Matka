@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 
 #[ORM\Entity(repositoryClass: DemandeGeneraleRepository::class)]
-#[Groups('demande')]
+#[Groups('api_demande_generale')]
 
 class DemandeGenerale
 {
@@ -38,7 +38,7 @@ class DemandeGenerale
     private ?string $contenu = null;
 
     #[ORM\ManyToOne(inversedBy: 'demandeGenerales')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Statut $Statut = null;
 
     public function getId(): ?int
@@ -117,6 +117,8 @@ class DemandeGenerale
 
         return $this;
     }
+
+
 
     public function getStatut(): ?Statut
     {

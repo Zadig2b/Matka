@@ -89,7 +89,42 @@
     margin-bottom: 20px;
   }
   .row {
-  overflow-x: auto;  
+  overflow-y: auto;  
   height: 500px;
   }
 }
+
+@media screen and (max-width: 800px) and (min-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .row {
+  overflow-y: auto;  
+  height: 500px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+    overflow-y: auto;  
+    height: 500px;
+
+  }
+
+  .column {
+    width: 50%; /* Each column takes up 50% of the container width */
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1200px) {
+
+
+  .column {
+    width: 33%; /* Each column takes up 50% of the container width */
+  }
+}
+

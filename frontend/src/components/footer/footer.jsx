@@ -9,13 +9,14 @@ export default function Footer(props) {
   return (
     <>
       <div className="super-footer">
-        <div className="footer-header">
-          <div className="hero-logo">
-            <div className="sub-logo">
+        <img src="/brand/logo resized.png" alt="logo" id="logo-footer" />
+        <img src="/brand/icône seule.png" alt="logo" id="icône" />
+
+          <div className="brand-name">
               <h1>{metadata.title}</h1>
-            </div>
           </div>
-        </div>
+          <img src="/brand/icône seule.png" alt="logo" id="icône" />
+          <img src="/brand/logo resized.png" alt="logo" id="logo-footer" />
 
       </div>
     </>

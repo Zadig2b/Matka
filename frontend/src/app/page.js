@@ -1,8 +1,9 @@
 "use client"
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import TravelList from "@/components/travelList/TravelList";
 import "./globals.css"
-import styles from "./page.module.css"
-import HeroHeader from "@/components/heroHeader/HeroHeader";
+import HeroHeader from "@/components/heroHeader/heroHeader";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
       {loading && !error && <div>Données en cours de chargement !</div>}
       {!loading && !error && data && (
             <div className="scroll-container">
+
       <div className="row">
 
         <TravelList travels={data}

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Statut
 {
+    
     #[ORM\Id]
     #[ORM\Column(type: 'integer', nullable: false, options: ['unsigned' => true])] // Add options
     private ?int $id = null;

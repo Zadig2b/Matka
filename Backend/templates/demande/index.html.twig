@@ -13,6 +13,7 @@
                 <th>Prenom</th>
                 <th>Email</th>
                 <th>Tel</th>
+                <th>Voyage concerné</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,8 @@
                 <td>{{ demande.prenom }}</td>
                 <td>{{ demande.email }}</td>
                 <td>{{ demande.tel }}</td>
+                <td>{{ demande.voyageId }}</td>
+
                 <td>
                     <a href="{{ path('app_demande_show', {'id': demande.id}) }}">show</a>
                     <a href="{{ path('app_demande_edit', {'id': demande.id}) }}">edit</a>
