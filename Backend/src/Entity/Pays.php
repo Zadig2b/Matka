@@ -6,6 +6,10 @@ use App\Repository\PaysRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
+#[Groups('api_voyage_methods')]
+
 
 #[ORM\Entity(repositoryClass: PaysRepository::class)]
 class Pays
@@ -13,7 +17,10 @@ class Pays
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('api_pays_methods')]
+
     private ?int $id = null;
+    #[Groups('api_pays_methods')]
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;

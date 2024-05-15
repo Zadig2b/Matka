@@ -1,28 +1,36 @@
 export const formatDuration = (durationString) => {
-    // Extracting days, months, and years from the duration string
-    const matches = durationString.match(/P(\d+)Y(\d+)M(\d+)D/);
-    const years = parseInt(matches[1]);
-    const months = parseInt(matches[2]);
-    const days = parseInt(matches[3]);
-  
-    // Constructing the human-readable format
-    let formattedDuration = "";
-    if (years > 0) {
-      formattedDuration += `${years} ${years > 1 ? "years" : "year"}`;
-    }
-    if (months > 0) {
-      formattedDuration += `${formattedDuration ? ", " : ""}${months} ${
-        months > 1 ? "months" : "month"
-      }`;
-    }
-    if (days > 0) {
-      formattedDuration += `${formattedDuration ? ", " : ""}${days} ${
-        days > 1 ? "days" : "day"
-      }`;
-    }
-  
-    return formattedDuration;
-  };
+  if (!durationString) {
+    return ""; // Return empty string if durationString is undefined
+  }
+
+  // Extracting days, months, and years from the duration string
+  const matches = durationString.match(/P(\d+)Y(\d+)M(\d+)D/);
+  if (!matches) {
+    return ""; // Return empty string if durationString does not match the expected format
+  }
+  const years = parseInt(matches[1]);
+  const months = parseInt(matches[2]);
+  const days = parseInt(matches[3]);
+
+  // Constructing the human-readable format
+  let formattedDuration = "";
+  if (years > 0) {
+    formattedDuration += `${years} ${years > 1 ? "years" : "year"}`;
+  }
+  if (months > 0) {
+    formattedDuration += `${formattedDuration ? ", " : ""}${months} ${
+      months > 1 ? "months" : "month"
+    }`;
+  }
+  if (days > 0) {
+    formattedDuration += `${formattedDuration ? ", " : ""}${days} ${
+      days > 1 ? "days" : "day"
+    }`;
+  }
+
+  return formattedDuration;
+};
+
   
   export const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };

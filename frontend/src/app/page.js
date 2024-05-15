@@ -31,19 +31,24 @@ export default function Home() {
 
   return (
     <main>
-      <HeroHeader />
+      {/* <HeroHeader /> */}
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
       {loading && !error && <div>Données en cours de chargement !</div>}
       {!loading && !error && data && (
+<>
+<HeroHeader/>
             <div className="scroll-container">
 
-      <div className="row">
 
+      <div className="list-header">
+          <h1>Liste des Voyages</h1>
+        </div>
+      <div className="row">
         <TravelList travels={data}
         />
                       </div>
                       </div>
-
+</>
       )}
       {!loading && error && <div>Une erreur est survenue</div>}
     </main>

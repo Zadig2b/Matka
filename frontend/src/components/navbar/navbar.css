@@ -4,7 +4,7 @@
     align-items: baseline;
     flex-wrap: wrap;
     padding: 10px 20px;
-    background-color: rgba(133, 167, 255, 0.93);
+    background-color: rgba(56, 93, 126, 1);
     .logo {
         margin: 0;
         font-size: 32px;
@@ -23,5 +23,9 @@
         margin: 0;
         padding: 0;
         list-style: none;
+    }
+    a {
+        color: white;
+
     }
 }

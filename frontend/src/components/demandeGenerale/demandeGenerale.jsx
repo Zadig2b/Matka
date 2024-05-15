@@ -49,20 +49,20 @@ export default function DemandeGenerale(props) {
                     <h2>Demande de contact</h2>
               <div className="my-form-style">
             <label>
-                Nom:
-                <input type="text" className="form-control" value={nom} onChange={(e) => setNom(e.target.value)} />
+                Nom:*
+                <input type="text" className="form-control" value={nom} onChange={(e) => setNom(e.target.value)} required/>
             </label>
             </div>
             <div className="my-form-style">
             <label>
-                Prénom:
-                <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+                Prénom:*
+                <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} required/>
             </label>
             </div>
             <div className="my-form-style">
             <label>
-                Email:
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                Email:*
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             </label>
             </div>
             <div className="my-form-style">
@@ -73,14 +73,14 @@ export default function DemandeGenerale(props) {
             </div>
             <div className="my-form-style">
             <label>
-                Sujet:
-                <input type="text" value={sujet} onChange={(e) => setSujet(e.target.value)} />
+                Sujet:*
+                <input type="text" value={sujet} onChange={(e) => setSujet(e.target.value)} required/>
             </label>
             </div>
             <div className="my-form-style">
             <label>
-                Contenu:
-                <textarea value={contenu} onChange={(e) => setContenu(e.target.value)} />
+                Contenu:*
+                <textarea value={contenu} onChange={(e) => setContenu(e.target.value)} required/>
             </label>
             </div>
             <button type="submit">Envoyer</button>

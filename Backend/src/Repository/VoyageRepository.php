@@ -56,5 +56,45 @@ class VoyageRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+        /**
+     * @param string $categoryName
+     * @return Voyage[] Returns an array of Voyage objects
+     */
+    public function findByCategoryName(string $categoryName): array
+    {
+        return $this->createQueryBuilder('v')
+            ->join('v.get_cat', 'cat')
+            ->andWhere('cat.nom = :categoryName')
+            ->setParameter('categoryName', $categoryName)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param string $countryName
+     * @return Voyage[] Returns an array of Voyage objects
+     */
+    public function findByCountryName(string $countryName): array
+    {
+        return $this->createQueryBuilder('v')
+            ->join('v.pays', 'p')
+            ->andWhere('p.nom = :countryName')
+            ->setParameter('countryName', $countryName)
+            ->getQuery()
+            ->getResult();
+    }
+    public function findByCountryNameAndCategoryName(string $countryName, string $categoryName): array
+    {
+        return $this->createQueryBuilder('v')
+            ->join('v.pays', 'p')
+            ->join('v.get_cat', 'cat')
+            ->andWhere('p.nom = :countryName')
+            ->andWhere('cat.nom = :categoryName')
+            ->setParameter('countryName', $countryName)
+            ->setParameter('categoryName', $categoryName)
+            ->getQuery()
+            ->getResult();
+    }
     
 }

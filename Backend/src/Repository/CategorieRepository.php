@@ -45,4 +45,14 @@ class CategorieRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function getVoyagesByCategorie(string $categorie): array
+    {
+        return $this->createQueryBuilder('cv')
+            ->join('cv.voyage', 'v')
+            ->join('cv.categorie', 'c')
+            ->where('c.nom = :categorie')
+            ->setParameter('categorie', $categorie)
+            ->getQuery()
+            ->getResult();
+    }
 }

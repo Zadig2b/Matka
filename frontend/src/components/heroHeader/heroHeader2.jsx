@@ -16,13 +16,6 @@ export default function heroHeader(props) {
 
         <PetitLogo height="200px" />
       </div>
-      <div className="super-header">
-
-      <div className="hero-subheader">
-      {metadata.description}
-      </div>
-      </div>
-
     </>
   );
 }

@@ -7,9 +7,7 @@ export default function TravelList(props) {
     <>
 
       
-      <div className="list-header">
-          <h1>Travels List</h1>
-        </div>
+
         {props.travels.map((travel, index) => (
           <div key={index} className="column">
             <div className="card">
@@ -28,7 +26,7 @@ export default function TravelList(props) {
               region={travel.region}
               image={travel.image}
               description={travel.description}
-              id={travel.id}              
+              id={travel.id}
               />
 
 

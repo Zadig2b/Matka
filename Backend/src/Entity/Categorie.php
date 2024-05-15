@@ -8,14 +8,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-// #[Groups('api_voyage_methods')]
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('api_categorie_methods')]
+
     private ?int $id = null;
+    #[Groups('api_categorie_methods')]
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
@@ -52,6 +54,7 @@ class Categorie
     /**
      * @return Collection<int, Voyage>
      */
+
     public function getRelation(): Collection
     {
         return $this->relation;

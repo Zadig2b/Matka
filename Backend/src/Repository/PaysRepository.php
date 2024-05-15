@@ -45,4 +45,18 @@ class PaysRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+        /**
+     * @param string $countryName
+     * @return Voyage[] Returns an array of Voyage objects
+     */
+    public function findByCountryName(string $countryName): array
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.pays_voyage', 'v')
+            ->andWhere('p.nom = :countryName')
+            ->setParameter('countryName', $countryName)
+            ->getQuery()
+            ->getResult();
+    }
 }

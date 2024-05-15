@@ -73,7 +73,7 @@ foreach ($statutData as $data) {
             $pays->setNom($name);
 
             $manager->persist($pays);
-            $paysEntities[] = $pays;
+            $paysEntities[$name] = $pays; // Store pays entities by name for easy retrieval
         }
         // Create Categorie entities
         $categorieNames = ['Détente Citadine', 'Excursion', 'Voyage Insolite', 'Nuit Polaire'];
@@ -108,10 +108,10 @@ foreach ($statutData as $data) {
             $voyage->setPrix($this->randomPrice($voyage->getDuree()) . '€');
             $voyage->setImage($voyage->getNom() . '.jpg');
             $voyage->setVoyageUser($userEntities[array_rand($userEntities)]);
-            // Randomly select a Pays entity
-            $randomIndexPays = array_rand($paysEntities);
-            $randomPays = $paysEntities[$randomIndexPays];
-            $voyage->addPay($randomPays);
+            // Get the Pays entity corresponding to the selected country name
+            $pays = $paysEntities[$randomPaysName];
+            // Add the pays to the voyage
+            $voyage->addPay($pays);
         
             // Add other fields as needed
             $manager->persist($voyage);

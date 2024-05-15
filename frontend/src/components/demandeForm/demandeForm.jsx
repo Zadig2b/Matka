@@ -40,30 +40,40 @@ export default function DemandeForm(props) {
     };
   
     return (
-        <form onSubmit={handleSubmit} >
-                  <div className="card-form">
+      <form onSubmit={handleSubmit} >
+          
+      <div className="card-form">
+        <h2>Demande de contact</h2>
+  <div className="my-form-style">
+<label>
+    Nom:*
+    <input type="text" className="form-control" value={nom} onChange={(e) => setNom(e.target.value)} required/>
+</label>
+</div>
+<div className="my-form-style">
+<label>
+    Prénom:*
+    <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} required/>
+</label>
+</div>
+<div className="my-form-style">
+<label>
+    Email:*
+    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+</label>
+</div>
+<div className="my-form-style">
+<label>
+    Téléphone:
+    <input type="tel" value={tel} onChange={(e) => setTel(e.target.value)} />
+</label>
+</div>
 
-              <div className="mb-3">
-            <label>
-                Nom:
-                <input type="text" className="form-control" value={nom} onChange={(e) => setNom(e.target.value)} />
-            </label>
-            </div>
-            <label>
-                Prénom:
-                <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
-            </label>
-            <label>
-                Email:
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </label>
-            <label>
-                Téléphone:
-                <input type="tel" value={tel} onChange={(e) => setTel(e.target.value)} />
-            </label>
-            <button type="submit">Submit</button>
-            </div>
+<button type="submit">Envoyer</button>
+</div>
 
-        </form>
+</form>
+        
     );
 }
+

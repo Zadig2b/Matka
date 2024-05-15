@@ -1,18 +1,54 @@
+.card-container {
+    margin: 50px 0px;
+}
 .card-form {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
     padding: 16px;
     margin: 20px;
-    text-align: center;
     background-color: #f1f1f1;
     border-radius: 20px;
+    font-weight: bold;
+    gap: 20px; 
+  }
 
-    input {
-        align-self: end;
-    }
+
   
+
+  
+  .my-form-style {
+    display: flex;
+    flex-direction: column;
+    textarea {
+      min-height: 100px;
+    }
+    
+  }
+
+  .my-form-style label {
+    display: block; 
+  }
+  
+  .my-form-style input,
+  .my-form-style textarea {
+    width: 100%; 
+  }
+  
+  
+  @media (max-width: 600px) {
+    .my-form-style {
+      flex-direction: column;
+    }
+  }
+  
+
+  
+  @media (max-width: 600px) {
+    .my-form-style {
+      flex-direction: column;
+    }
   }
   

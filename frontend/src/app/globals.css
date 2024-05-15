@@ -3,18 +3,16 @@ body {
 }
 
 h1, h2 {
-  background-color: #f1f1f1;
+  background-color: #ffffff;
+  color: rgba(65, 105, 142, 1);
+  /* color: rgb(123, 213, 255); */
   width: fit-content;
   margin: 20px;
   padding: 10px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   box-shadow: 0 4px 6px 5px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);  
 
-
-}
-
-.logo-container {
 
 }
 
@@ -40,21 +38,7 @@ a:hover {
   font-size: large; 
 } 
 
-.hero-logo {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px;
- 
-    
-    position: absolute;
-}
-.sub-logo {
-    width: fit-content;
-    border-radius: 20px;
-    background-color: rgba(133, 204, 255, 0.68);
-}
+
 
 
 @font-face {
@@ -69,3 +53,4 @@ a:hover {
       url("./../fonts/LexendDeca[wght].ttf") format("truetype");
   }
   
+

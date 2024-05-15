@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/css": "^11.11.2",
     "bootstrap": "^5.3.3",
     "next": "14.2.3",
     "nice-forms.css": "^0.1.7",

@@ -3,26 +3,30 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
     padding: 16px;
     margin: 20px;
     background-color: #f1f1f1;
     border-radius: 20px;
     font-weight: bold;
-    width: fit-content;
+    gap: 20px; 
   }
+
+
   
 
   
   .my-form-style {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Adds spacing between input fields */
+    textarea {
+      min-height: 100px;
+    }
     
   }
 
   .my-form-style label {
-    display: block; /* Ensures each label takes up its own line */
+    display: block; 
   }
   
   .my-form-style input,
@@ -31,7 +35,6 @@
   }
   
   
-  /* Ensures responsiveness on smaller screens */
   @media (max-width: 600px) {
     .my-form-style {
       flex-direction: column;
@@ -40,7 +43,6 @@
   
 
   
-  /* Ensures responsiveness on smaller screens */
   @media (max-width: 600px) {
     .my-form-style {
       flex-direction: column;
