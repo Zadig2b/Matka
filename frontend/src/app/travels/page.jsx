@@ -49,36 +49,47 @@ export default function FetchAllTravels(props) {
   }, []);
 
   const handleFilter = (filters) => {
-    console.log("Applying filters:", filters); // Log the filters being applied
+    let filteredTravels = null;
   
-    // Perform filtering logic here
-    if (filters.category) {
-      console.log("Filtering by category:", filters.category);
+    if (filters.category && filters.country) {
+      // Fetch filtered travels by both country and category
+      fetch(`http://127.0.0.1:8000/api/voyages-par-pays-et-categorie/${filters.country}/${filters.category}`)
+        .then((response) => response.json())
+        .then((data) => {
+          filteredTravels = data;
+          setFilteredTravels(filteredTravels);
+        })
+        .catch((error) => {
+          console.error("Error fetching filtered travels:", error);
+        });
+    } else if (filters.category) {
+      // Fetch filtered travels by category only
       fetch(`http://127.0.0.1:8000/api/voyages-par-categorie/${filters.category}`)
         .then((response) => response.json())
-        .then((filteredTravels) => {
-          console.log("Filtered travels by category:", filteredTravels); // Log the filtered travels
+        .then((data) => {
+          filteredTravels = data;
           setFilteredTravels(filteredTravels);
         })
         .catch((error) => {
           console.error("Error fetching filtered travels by category:", error);
         });
     } else if (filters.country) {
-      console.log("Filtering by country:", filters.country);
+      // Fetch filtered travels by country only
       fetch(`http://127.0.0.1:8000/api/voyages-par-pays/${filters.country}`)
         .then((response) => response.json())
-        .then((filteredTravels) => {
-          console.log("Filtered travels by country:", filteredTravels); // Log the filtered travels
+        .then((data) => {
+          filteredTravels = data;
           setFilteredTravels(filteredTravels);
         })
         .catch((error) => {
           console.error("Error fetching filtered travels by country:", error);
         });
     } else {
-      // No filters applied, set filteredTravels back to original travels
-      setFilteredTravels(travels);
+      // No filters applied, set filteredTravels to null
+      setFilteredTravels(null);
     }
   };
+  
   
   
   
@@ -87,7 +98,11 @@ export default function FetchAllTravels(props) {
 
   return (
     <>
-              {loading && !error && <div>Loading...</div>}
+      <HeroHeader2 />
+
+      <main>
+
+      {loading && !error && <div>Loading...</div>}
           {!loading && !error && travels && (
       <FilterBar
       
@@ -97,10 +112,9 @@ export default function FetchAllTravels(props) {
       />
     )}
     {error && <div>Error occurred.</div>}
-      <HeroHeader2 />
 
-      <main>
         <div className="all-container">
+          
           {loading && !error && <div>Loading...</div>}
           {!loading && !error && travels && (
             <TravelList travels={filteredTravels || travels} />

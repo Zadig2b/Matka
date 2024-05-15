@@ -1,7 +1,6 @@
-// FilterBar.js
 
 import React, { useState } from 'react';
-
+import './filterBar.css';
 const FilterBar = ({ categories, countries, onFilter }) => {
   const [category, setCategory] = useState('');
   const [country, setCountry] = useState('');
@@ -13,7 +12,7 @@ const FilterBar = ({ categories, countries, onFilter }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id='filterBar'>
       <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="">All Categories</option>
         {categories.map((cat) => (
