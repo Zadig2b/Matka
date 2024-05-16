@@ -14,27 +14,27 @@ const FilterBar = ({ categories, countries, onFilter }) => {
   return (
     <form onSubmit={handleSubmit} id='filterBar'>
       <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option value="">All Categories</option>
+        <option value="">Categories</option>
         {categories.map((cat) => (
           <option key={cat.id} value={cat.nom}>{cat.nom}</option>
         ))}
       </select>
 
       <select value={country} onChange={(e) => setCountry(e.target.value)}>
-        <option value="">All Countries</option>
+        <option value="">Pays</option>
         {countries.map((country) => (
           <option key={country.id} value={country.nom}>{country.nom}</option>
         ))}
       </select>
 
       <select value={duration} onChange={(e) => setDuration(e.target.value)}>
-        <option value="">All Durations</option>
+        <option value="">Durées</option>
         <option value="short">Short (1-7 days)</option>
         <option value="medium">Medium (8-14 days)</option>
         {/* <option value="long">Long (>14 days)</option> */}
       </select>
 
-      <button type="submit">Filter</button>
+      <button type="submit">Filtrer</button>
     </form>
   );
 };

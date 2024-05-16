@@ -10,6 +10,7 @@ use App\Entity\Voyage;
 use App\Repository\CategorieRepository;
 use App\Repository\PaysRepository;
 use App\Repository\VoyageRepository;
+use DateInterval;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -92,6 +93,28 @@ class ApiController extends AbstractController
         return new JsonResponse($jsonVoyages, Response::HTTP_OK, [], true);
     }
 
+    #[Route('/voyages-par-duree/{duree}', name: 'voyage_par_duree', methods: ['GET'])]
+    public function getVoyageParDuree(string $durationString, VoyageRepository $voyageRepository): JsonResponse
+    {
+        $duree = $this->convertDurationStringToDateInterval($durationString);
+
+        $voyages = $voyageRepository->findByDuree($duree);
+        return $this->json($voyages, context: ['groups' => 'api_voyage_methods']);
+    }
+
+    private function convertDurationStringToDateInterval(string $durationString): DateInterval
+    {
+        $intervals = [
+            'short' => 'P7D',    // 7 days
+            'medium' => 'P14D',  // 14 days
+        ];
+
+        if (!isset($intervals[$durationString])) {
+            throw new \InvalidArgumentException('Invalid duration string');
+        }
+
+        return new DateInterval($intervals[$durationString]);
+    }
     #[Route('/voyage/{id}', name: 'detailvoyage', methods: ['GET'])]
     public function getDetailvoyage(int $id, SerializerInterface $serializer, VoyageRepository $voyageRepository): JsonResponse
     {
@@ -188,7 +211,7 @@ class ApiController extends AbstractController
         SerializerInterface $serializer,
         ValidatorInterface $validator
     ) {
-        // Deserialize the request content into a DemandeGenerale object
+        //Désérialiser le contenu de la requête dans un objet DemandeGénérale
         $demandeGenerale = $serializer->deserialize(
             $request->getContent(),
             DemandeGenerale::class,
@@ -196,33 +219,27 @@ class ApiController extends AbstractController
             ['groups' => 'api_demande_generale']
         );
 
-        // Validate the DemandeGenerale object
         $errors = $validator->validate($demandeGenerale);
 
-        // Check if there are validation errors
         if (count($errors) > 0) {
-            // Prepare error messages
             $messages = [];
             foreach ($errors as $error) {
                 $messages[] = $error->getMessage();
             }
-            // Return validation errors
             return $this->json($messages, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        // Check if the 'Statut' property is not set in the request payload
         if (!$demandeGenerale->getStatut()) {
-            // Set a default value for the 'Statut' property
-            // You may fetch the default status entity from the database or set it manually
-            $defaultStatut = $em->getRepository(Statut::class)->find(1); // Assuming '1' is the ID of the default status
+            //Définir une valeur par défaut pour la propriété 'Statut'
+            $defaultStatut = $em->getRepository(Statut::class)->find(1);
             $demandeGenerale->setStatut($defaultStatut);
         }
 
-        // Persist the DemandeGenerale object
+        //Conserver l'objet DemandeGénérale
         $em->persist($demandeGenerale);
         $em->flush();
 
-        // Return the persisted DemandeGenerale object
+        //Renvoie l'objet DemandeGénérale persisté
         return $this->json(['message' => 'Demande saved successfully'], Response::HTTP_CREATED);
     }
 }

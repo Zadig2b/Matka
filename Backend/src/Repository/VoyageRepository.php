@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use App\Entity\Voyage;
+use DateInterval;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -93,6 +94,15 @@ class VoyageRepository extends ServiceEntityRepository
             ->andWhere('cat.nom = :categoryName')
             ->setParameter('countryName', $countryName)
             ->setParameter('categoryName', $categoryName)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByDuree(DateInterval $duree): array
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.duree = :duree')
+            ->setParameter('duree', $duree)
             ->getQuery()
             ->getResult();
     }

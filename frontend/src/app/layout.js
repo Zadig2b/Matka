@@ -2,7 +2,6 @@ import { Cinzel, Inter, La_Belle_Aurore, Lexend_Deca, Pacifico } from "next/font
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/footer";
-import HeroHeader from "@/components/heroHeader/heroHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 export const Aurore = La_Belle_Aurore({ subsets: ["latin"], weight: "400" });

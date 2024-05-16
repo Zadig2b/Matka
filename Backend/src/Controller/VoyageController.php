@@ -11,7 +11,6 @@ use Symfony\Bundle\SecurityBundle\Security as SecurityBundleSecurity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Core\Security;
 
 #[Route('admin/voyage')]
 class VoyageController extends AbstractController
@@ -35,13 +34,11 @@ class VoyageController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $voyage = new Voyage();
-        
-        // Get the authenticated user
+
         $user = $this->security->getUser();
-        
-        // Set the authenticated user as the voyage_user
+
         $voyage->setVoyageUser($user);
-        
+
         $form = $this->createForm(VoyageType::class, $voyage);
         $form->handleRequest($request);
 
@@ -87,7 +84,7 @@ class VoyageController extends AbstractController
     #[Route('/{id}', name: 'app_voyage_delete', methods: ['POST'])]
     public function delete(Request $request, Voyage $voyage, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$voyage->getId(), $request->getPayload()->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $voyage->getId(), $request->getPayload()->get('_token'))) {
             $entityManager->remove($voyage);
             $entityManager->flush();
         }

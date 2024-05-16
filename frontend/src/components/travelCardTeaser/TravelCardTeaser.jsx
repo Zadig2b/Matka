@@ -6,6 +6,7 @@ export default function TravelCardTeaser(props) {
 
   return (
     <div className="sub-card">
+      <div id="duree" hidden={true}>{props.duree}</div>
       <h3>
         {props.pays} {formatDuration(props.duree)} {props.prix}
       </h3>

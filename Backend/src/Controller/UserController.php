@@ -29,7 +29,7 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-    
+
         if ($form->isSubmitted() && $form->isValid()) {
             // Check if the email address already exists
             $existingUser = $entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()]);
@@ -38,7 +38,7 @@ class UserController extends AbstractController
                 $this->addFlash('error', 'This email address is already registered.');
                 return $this->redirectToRoute('app_user_new');
             }
-    
+
             // Encode the password before saving
             $user->setPassword(
                 $passwordEncoder->hashPassword(
@@ -46,19 +46,19 @@ class UserController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-    
+
             $entityManager->persist($user);
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
-    
+
         return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
-    
+
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
@@ -95,7 +95,7 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->getPayload()->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }
