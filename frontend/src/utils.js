@@ -19,12 +19,12 @@ export const formatDuration = (durationString) => {
   }
   if (months > 0) {
     formattedDuration += `${formattedDuration ? ", " : ""}${months} ${
-      months > 1 ? "months" : "month"
+      months > 1 ? "mois" : "mois"
     }`;
   }
   if (days > 0) {
     formattedDuration += `${formattedDuration ? ", " : ""}${days} ${
-      days > 1 ? "days" : "day"
+      days > 1 ? "jours" : "jour"
     }`;
   }
 

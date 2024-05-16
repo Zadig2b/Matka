@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use App\Entity\Voyage;
 use DateInterval;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -100,9 +101,14 @@ class VoyageRepository extends ServiceEntityRepository
 
     public function findByDuree(DateInterval $duree): array
     {
+        $startDate = (new DateTime())->sub($duree); // Calculate start date based on duration
+        $endDate = new DateTime(); // Current date
+    
         return $this->createQueryBuilder('v')
-            ->andWhere('v.duree = :duree')
-            ->setParameter('duree', $duree)
+            ->andWhere('v.date_debut <= :date_fin')
+            ->andWhere(':date_debut <= v.date_fin') 
+            ->setParameter('date_debut', $startDate->format('Y-m-d')) // Format as string for comparison
+            ->setParameter('date_fin', $endDate->format('Y-m-d')) // Format as string for comparison
             ->getQuery()
             ->getResult();
     }

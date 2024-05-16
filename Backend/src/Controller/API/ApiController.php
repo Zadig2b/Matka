@@ -93,7 +93,7 @@ class ApiController extends AbstractController
         return new JsonResponse($jsonVoyages, Response::HTTP_OK, [], true);
     }
 
-    #[Route('/voyages-par-duree/{duree}', name: 'voyage_par_duree', methods: ['GET'])]
+    #[Route('/voyages-par-duree/{durationString}', name: 'voyage_par_duree', methods: ['GET'])]
     public function getVoyageParDuree(string $durationString, VoyageRepository $voyageRepository): JsonResponse
     {
         $duree = $this->convertDurationStringToDateInterval($durationString);
