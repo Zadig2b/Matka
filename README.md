@@ -21,15 +21,14 @@ Le projet Matka est une application web destinée à simuler un site de tour op�
 - Filtre par durée non fonctionnel.
 - Prise de contact pour un voyage ou pour une demande générale : enregistrement de la demande en base de données.
 
-## Pré-requis
+## Pré-requis:
+- installation Symfony
+https://symfony.com/doc/current/setup.html
 
-Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre système :
+- installation Node.js / Next.js
+https://www.freecodecamp.org/news/how-to-install-react-a-step-by-step-guide/
+https://nextjs.org/docs/getting-started/installation
 
-- PHP >= 7.4
-- Composer
-- Node.js >= 14
-- npm ou Yarn
-- MySQL ou tout autre système de gestion de base de données compatible avec Symfony
 
 ## Installation
 
@@ -40,8 +39,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 - PHP >= 7.4
 - Composer
 - Node.js >= 14
-- npm ou Yarn
-- MySQL ou tout autre système de gestion de base de données compatible avec Symfony
+- MySQL 
 
 ### Instructions d'installation
 
@@ -137,7 +135,7 @@ php bin/console doctrine:fixtures:load
 Lancer le Serveur :
 
 Lancez le serveur web (comme Apache ou Nginx) pour héberger votre application Symfony.
-# Vérification :
+#### Vérification :
 
 Accédez à l'URL de votre application pour vérifier que le back-end est correctement déployé et accessible.
 
